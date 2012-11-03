@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FrameworkQ.CommandLine">
+      <HintPath>..\..\binary\FrameworkQ.CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -47,12 +50,6 @@
     <Compile Include="QuitCommand.cs" />
     <Compile Include="UnzipCommand.cs" />
     <Compile Include="ZipCommand.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FrameworkX.CommandLine\FrameworkX.CommandLine.csproj">
-      <Project>{CE2296CE-C144-46EF-8F07-EA9806A536C2}</Project>
-      <Name>FrameworkX.CommandLine</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
