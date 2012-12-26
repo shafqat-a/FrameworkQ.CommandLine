@@ -13,21 +13,18 @@ namespace FrameworkQ.CommandLine.Demo
             parser.RegisterCommand(typeof(ZipCommand));
             parser.RegisterCommand(typeof(QuitCommand));
             parser.RegisterCommand(typeof(UnzipCommand));
-            parser.IsFirstWordCommand = true;
-            while (true)
+            parser.IsFirstWordCommand = true;            
+
+            string input = string.Join(" ", args);
+            parser.CommandKeyword = CommandOption.Opt("action", CommandOption.CommandOptionType.String, false);
+            CommandParseResult result = parser.ParseCommand(input.Split(" ".ToCharArray()));
+            if (result.ErrorOccurred)
             {
-                Console.Write("Enter Command in the line below: \n");
-                string input = Console.ReadLine();
-                parser.CommandKeyword = CommandOption.Opt("action", CommandOption.CommandOptionType.String, false);
-                CommandParseResult result = parser.ParseCommand(input.Split(" ".ToCharArray()));
-                if (result.ErrorOccurred)
-                {
-                    Console.WriteLine(result.ErrorMessage);
-                }
-                else
-                {
-                    result.Command.Execute();
-                }
+                Console.WriteLine(result.ErrorMessage);
+            }
+            else
+            {
+                result.Command.Execute();
             }
         }
     }
