@@ -67,7 +67,7 @@ For each command create a command class, which may look like this
             }
         }
 
-Create similar classes for `unzip` and `quit` command
+Create similar classes for `unzip` command
 
 Now you can just launch the command line with the following code.
 
