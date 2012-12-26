@@ -20,52 +20,7 @@ also lets have a unzip command that looks like this
 
     unzip -in [file to unzip] -out [path to extract the files to]
 
-For each command create a command class, which may look like this 
-
-        [Command ("zip", "Compresses the file")]
-        class ZipCommand : Command
-        {
-            private string _in = string.Empty;
-            private string _outpath = string.Empty;    
-            
-            public ZipCommand(): base("zip") {}
-            
-            [CommandParameter("in", false, 
-                CommandOption.CommandOptionType.FilePath,false,
-                "The file to be zipped")]
-            public string In
-            {
-                get { return _in; }
-                set { _in = value; }
-            }    
-            [CommandParameter("out", false, 
-                CommandOption.CommandOptionType.PossibleFilePath, false,
-                "Output zip file name")]
-            public string Outpath
-            {
-                get { return _outpath; }
-                set { _outpath = value; }
-            }
-    
-            private int _bufferSize = 512;
-            [CommandParameter("buffer", true, CommandOption.CommandOptionType.Integer,
-                true, "Number of bytes to zip on each iteration")]
-            public int BufferSize
-            {
-                get { return _bufferSize; }
-                set { _bufferSize = value; }
-            }
-    
-            [System.Security.Permissions.FileIOPermission(
-                System.Security.Permissions.SecurityAction.Demand)]
-            public override void Execute()
-            {
-                if (File.Exists(this.In))
-                {
-                    /*  The actual zipping code */
-                }
-            }
-        }
+For each command create a command class, marked by attributes. See Readme.md for documentation
 
 Create similar classes for `unzip` command
 
